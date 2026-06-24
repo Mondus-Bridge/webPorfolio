@@ -6,16 +6,20 @@ import MoonIcon from './icons/MoonIcon';
 import { useTheme } from '../../context/ThemeContext';
 import { useTranslation } from 'react-i18next';
 import { useLocale, SUPPORTED_LOCALES, Locale } from '../../hooks/useLocale';
+import QrIcon from './icons/QrIcon';
+import QRCode from 'react-qr-code';
 
 export default function Header() {
   const { isDark, toggle } = useTheme();
   const { t } = useTranslation();
   const { current, setLanguage } = useLocale();
   const location = useLocation();
+  const [isQrOpen, setIsQrOpen] = React.useState(false);
+
 
   const NavLink = ({ to, children }: { to: string; children: React.ReactNode }) => {
     const isActive = location.pathname === to;
-    return (
+  return ( <>
       <Link
         to={to}
         className={`relative py-1.5 text-xs sm:text-sm font-medium tracking-wide transition-colors duration-200 shrink-0 ${
@@ -35,10 +39,10 @@ export default function Header() {
           />
         )}
       </Link>
-    );
+</> );
   };
 
-  return (
+  return ( <>
     <header
       className={`border-b sticky top-0 z-50 transition-all duration-300 backdrop-blur-md ${
         isDark
@@ -82,6 +86,59 @@ export default function Header() {
           >
             {isDark ? <SunIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> : <MoonIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
           </button>
+{/* QR Code Button - Hybrid Interaction */}
+<div className="relative group">
+  <button
+    onClick={() => {
+      // 📱 Touch detection: Only toggle state if the device supports touch or is a mobile viewport width
+      const isMobileOrTouch = window.matchMedia("(max-width: 768px)").matches || ('ontouchstart' in window);
+      if (isMobileOrTouch) {
+        setIsQrOpen(!isQrOpen);
+      }
+    }}
+    className={`p-1.5 sm:p-2 rounded-lg sm:rounded-xl transition-all duration-200 focus:outline-none border active:scale-95 shrink-0 ${
+      isDark
+        ? 'bg-gray-900 border-gray-800 text-teal-400 hover:text-teal-300'
+        : 'bg-gray-50 border-gray-200 text-teal-600 hover:text-teal-700'
+    } ${isQrOpen ? (isDark ? 'border-teal-400' : 'border-teal-600') : ''}`}
+    aria-label="Open WhatsApp QR code"
+  >
+    <QrIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+  </button>
+
+  {/* Only render the click backdrop overlay on mobile/touch screens */}
+  {isQrOpen && (
+    <div 
+      className="fixed inset-0 z-40 md:hidden" 
+      onClick={() => setIsQrOpen(false)} 
+    />
+  )}
+
+  {/* Pop‑over Window */}
+  <div 
+    className={`absolute top-full mt-2 left-1/2 -translate-x-1/2 w-40 p-4 bg-white border rounded-xl shadow-xl z-50 flex flex-col items-center justify-center transition-all duration-200 dark:bg-gray-900 dark:border-gray-800 ${
+      isQrOpen 
+        ? 'opacity-100 scale-100 pointer-events-auto' 
+        : 'opacity-0 scale-95 pointer-events-none md:group-hover:opacity-100 md:group-hover:scale-100 md:group-hover:pointer-events-auto'
+    }`}
+  >
+    <div className={`text-center text-xs font-bold tracking-wide uppercase mb-3 transition-colors ${
+      isDark ? 'text-teal-400' : 'text-teal-600'
+    }`}>
+      WhatsApp
+    </div>
+    
+    <div className="w-full flex items-center justify-center bg-white p-2 rounded-lg">
+      <QRCode
+        size={100}
+        style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+        value="https://wa.me/639218607106"
+        bgColor="#ffffff"
+        fgColor="#111827" 
+      />
+    </div>
+  </div>
+</div>
           {/* Language selector */}
           <select
             value={current}
@@ -100,5 +157,6 @@ export default function Header() {
         </div>
       </div>
     </header>
-  );
+
+</> );
 }
