@@ -1,10 +1,11 @@
 // src/components/Footer/Footer.tsx
 import React from 'react';
 import { useTheme } from '../../context/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
   const { isDark } = useTheme();
-  
+  const { t } = useTranslation();
   return (
     <footer className={`border-t py-8 mt-16 transition-colors ${
       isDark ? 'bg-gray-900 border-gray-800 text-gray-400' : 'bg-white border-gray-100 text-gray-600'
@@ -14,7 +15,7 @@ export default function Footer() {
         
         {/* Left Side / Top on Mobile: Copyright */}
         <p className="text-sm tracking-wide">
-          © {new Date().getFullYear()} Ilnur. All rights reserved.
+          © {new Date().getFullYear()} Ilnur. {t('footer.rights')}
         </p>
         
         {/* Right Side / Bottom on Mobile: Navigation Links */}
@@ -23,7 +24,7 @@ export default function Footer() {
             href="mailto:ilnur@example.com" 
             className={`transition-colors ${isDark ? 'hover:text-[#00c8aa]' : 'hover:text-green-600'}`}
           >
-            Email
+            {t('nav.email')}
           </a>
           <a 
             href="https://github.com/ilnur" 
@@ -31,7 +32,7 @@ export default function Footer() {
             rel="noopener noreferrer" 
             className={`transition-colors ${isDark ? 'hover:text-[#00c8aa]' : 'hover:text-green-600'}`}
           >
-            GitHub
+            {t('nav.github')}
           </a>
           <a 
             href="https://linkedin.com/in/ilnur" 
@@ -39,7 +40,7 @@ export default function Footer() {
             rel="noopener noreferrer" 
             className={`transition-colors ${isDark ? 'hover:text-[#00c8aa]' : 'hover:text-green-600'}`}
           >
-            LinkedIn
+            {t('nav.linkedin')}
           </a>
         </div>
 

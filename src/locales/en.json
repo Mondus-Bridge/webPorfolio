@@ -1,5 +1,16 @@
 {
-  "welcome": "Welcome",
-  "about": "About",
-  "contact": "Contact"
+  "home.title": "Full‑Stack Lead QA Engineer",
+  "home.description": "I blend finance‑driven analytical rigor with modern test automation (Playwright, CI/CD) to ship faster releases, cut production bugs by 90%, and mentor remote engineering teams.",
+  "home.coreExpertise": "Core Expertise",
+  "article.title": "Article Title",
+  "article.placeholder": "This is a placeholder article page. Replace with real content.",
+  "nav.resume": "Resume",
+  "nav.article": "Articles",
+  "nav.projects": "Projects",
+  "nav.email": "Email",
+  "nav.github": "GitHub",
+  "nav.linkedin": "LinkedIn",
+  "footer.rights": "All rights reserved.",
+  "projects.title": "Projects",
+  "projects.placeholder": "List of projects will go here. Replace with actual project details."
 }

@@ -1,5 +1,16 @@
 {
-  "welcome": "Добро пожаловать",
-  "about": "О нас",
-  "contact": "Контакт"
+  "home.title": "Ведущий QA Engineer Full‑Stack",
+  "home.description": "Я сочетaю финансовый аналитический подход с современной автоматизацией тестирования (Playwright, CI/CD), чтобы ускорять релизы, сокращать количество багов на 90% и наставлять удалённые команды.",
+  "home.coreExpertise": "Ключевые компетенции",
+  "article.title": "Заголовок статьи",
+  "article.placeholder": "Это пример статьи-заполнителя. Замените реальным содержимым.",
+  "nav.resume": "Резюме",
+  "nav.article": "Статьи",
+  "nav.projects": "Проекты",
+  "nav.email": "Эл. почта",
+  "nav.github": "GitHub",
+  "nav.linkedin": "LinkedIn",
+  "footer.rights": "Все права защищены.",
+  "projects.title": "Проекты",
+  "projects.placeholder": "Список проектов будет здесь. Замените на реальные детали проектов."
 }

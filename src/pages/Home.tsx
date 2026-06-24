@@ -2,12 +2,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Landing page for Ilnur Gabitov – Full‑Stack Lead QA Engineer.
  */
 export default function Home() {
   const { isDark } = useTheme();
+  const { t } = useTranslation();
 
   return (
     <div className="w-full space-y-16 py-12">
@@ -18,7 +20,7 @@ export default function Home() {
             <h1 className={`text-4xl sm:text-5xl md:text-6xl font-serif font-bold tracking-tight leading-tight ${
               isDark ? 'text-white' : 'text-gray-900'
             }`}>
-              Full‑Stack Lead QA Engineer
+                {t('home.title')}
             </h1>
             {/* Signature pipeline underline */}
             <svg
@@ -40,8 +42,7 @@ export default function Home() {
           <p className={`mx-auto max-w-2xl text-base sm:text-lg leading-relaxed mb-8 ${
             isDark ? 'text-gray-400' : 'text-gray-600'
           }`}>
-            I blend finance‑driven analytical rigor with modern test automation (Playwright, CI/CD) to ship
-            faster releases, cut production bugs by 90%, and mentor remote engineering teams.
+            {t('home.description')}
           </p>
           
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-md mx-auto text-sm font-medium">
@@ -49,7 +50,7 @@ export default function Home() {
               to="/resume"
               className="px-5 py-2.5 bg-green-600 text-white rounded-xl hover:bg-green-700 active:scale-95 transition-all text-center"
             >
-              Resume
+              {t('nav.resume')}
             </Link>
             <Link
               to="/projects"
@@ -59,7 +60,7 @@ export default function Home() {
                   : 'border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-gray-900'
               }`}
             >
-              Projects
+              {t('nav.projects')}
             </Link>
             <Link
               to="/article"
@@ -69,7 +70,7 @@ export default function Home() {
                   : 'border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-gray-900'
               }`}
             >
-              Articles
+              {t('nav.article')}
             </Link>
           </div>
         </div>
@@ -81,7 +82,7 @@ export default function Home() {
           isDark ? 'bg-gray-900/50 border-gray-800' : 'bg-gray-50/70 border-gray-100'
         }`}>
           <h2 className={`text-xl font-bold tracking-tight mb-6 ${isDark ? 'text-gray-100' : 'text-gray-900'}`}>
-            Core Expertise
+              {t('home.coreExpertise')}
           </h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
             {[
