@@ -15,6 +15,7 @@ export default function Header() {
   const { current, setLanguage } = useLocale();
   const location = useLocation();
   const [isQrOpen, setIsQrOpen] = React.useState(false);
+  const [isLangOpen, setIsLangOpen] = React.useState(false);
 
 
   const NavLink = ({ to, children }: { to: string; children: React.ReactNode }) => {
@@ -86,74 +87,123 @@ export default function Header() {
           >
             {isDark ? <SunIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> : <MoonIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
           </button>
-{/* QR Code Button - Hybrid Interaction */}
-<div className="relative group">
+      {/* QR Code Button - Hybrid Interaction */}
+      <div className="relative group">
+        <button
+          onClick={() => {
+            // 📱 Touch detection: Only toggle state if the device supports touch or is a mobile viewport width
+            const isMobileOrTouch = window.matchMedia("(max-width: 768px)").matches || ('ontouchstart' in window);
+            if (isMobileOrTouch) {
+              setIsQrOpen(!isQrOpen);
+            }
+          }}
+          className={`p-1.5 sm:p-2 rounded-lg sm:rounded-xl transition-all duration-200 focus:outline-none border active:scale-95 shrink-0 ${
+            isDark
+              ? 'bg-gray-900 border-gray-800 text-teal-400 hover:text-teal-300'
+              : 'bg-gray-50 border-gray-200 text-teal-600 hover:text-teal-700'
+          } ${isQrOpen ? (isDark ? 'border-teal-400' : 'border-teal-600') : ''}`}
+          aria-label="Open WhatsApp QR code"
+        >
+          <QrIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+        </button>
+
+        {/* Only render the click backdrop overlay on mobile/touch screens */}
+        {isQrOpen && (
+          <div 
+            className="fixed inset-0 z-40 md:hidden" 
+            onClick={() => setIsQrOpen(false)} 
+          />
+        )}
+
+        {/* Pop‑over Window */}
+        <div 
+          className={`absolute top-full mt-2 left-1/2 -translate-x-1/2 w-40 p-4 bg-white border rounded-xl shadow-xl z-50 flex flex-col items-center justify-center transition-all duration-200 dark:bg-gray-900 dark:border-gray-800 ${
+            isQrOpen 
+              ? 'opacity-100 scale-100 pointer-events-auto' 
+              : 'opacity-0 scale-95 pointer-events-none md:group-hover:opacity-100 md:group-hover:scale-100 md:group-hover:pointer-events-auto'
+          }`}
+        >
+          <div className={`text-center text-xs font-bold tracking-wide uppercase mb-3 transition-colors ${
+            isDark ? 'text-teal-400' : 'text-teal-600'
+          }`}>
+            WhatsApp
+          </div>
+          
+          <div className="w-full flex items-center justify-center bg-white p-2 rounded-lg">
+            <QRCode
+              size={100}
+              style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+              value="https://wa.me/639218607106"
+              bgColor="#ffffff"
+              fgColor="#111827" 
+            />
+          </div>
+        </div>
+      </div>
+{/* Custom Language Selector - Hybrid Interaction */}
+<div className="relative group ml-2"> 
+  
+  {/* Trigger Button */}
   <button
+    type="button"
     onClick={() => {
-      // 📱 Touch detection: Only toggle state if the device supports touch or is a mobile viewport width
       const isMobileOrTouch = window.matchMedia("(max-width: 768px)").matches || ('ontouchstart' in window);
       if (isMobileOrTouch) {
-        setIsQrOpen(!isQrOpen);
+        setIsLangOpen(!isLangOpen);
       }
     }}
-    className={`p-1.5 sm:p-2 rounded-lg sm:rounded-xl transition-all duration-200 focus:outline-none border active:scale-95 shrink-0 ${
+    className={`px-2.5 py-1.5 text-xs font-semibold tracking-wider uppercase rounded-lg border transition-all duration-200 focus:outline-none min-w-[42px] text-center active:scale-95 ${
       isDark
-        ? 'bg-gray-900 border-gray-800 text-teal-400 hover:text-teal-300'
-        : 'bg-gray-50 border-gray-200 text-teal-600 hover:text-teal-700'
-    } ${isQrOpen ? (isDark ? 'border-teal-400' : 'border-teal-600') : ''}`}
-    aria-label="Open WhatsApp QR code"
+        ? 'bg-gray-900 border-gray-800 text-gray-200 hover:text-white'
+        : 'bg-white border-gray-300 text-gray-800 hover:bg-gray-50'
+    } ${isLangOpen ? (isDark ? 'border-gray-600' : 'border-gray-400') : ''}`}
+    aria-label="Toggle language menu"
   >
-    <QrIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+    {current}
   </button>
 
-  {/* Only render the click backdrop overlay on mobile/touch screens */}
-  {isQrOpen && (
+  {/* Click Invisible Overlay Backdrop for Mobile Dismissal */}
+  {isLangOpen && (
     <div 
       className="fixed inset-0 z-40 md:hidden" 
-      onClick={() => setIsQrOpen(false)} 
+      onClick={() => setIsLangOpen(false)} 
     />
   )}
 
-  {/* Pop‑over Window */}
-  <div 
-    className={`absolute top-full mt-2 left-1/2 -translate-x-1/2 w-40 p-4 bg-white border rounded-xl shadow-xl z-50 flex flex-col items-center justify-center transition-all duration-200 dark:bg-gray-900 dark:border-gray-800 ${
-      isQrOpen 
-        ? 'opacity-100 scale-100 pointer-events-auto' 
-        : 'opacity-0 scale-95 pointer-events-none md:group-hover:opacity-100 md:group-hover:scale-100 md:group-hover:pointer-events-auto'
-    }`}
-  >
-    <div className={`text-center text-xs font-bold tracking-wide uppercase mb-3 transition-colors ${
-      isDark ? 'text-teal-400' : 'text-teal-600'
-    }`}>
-      WhatsApp
-    </div>
-    
-    <div className="w-full flex items-center justify-center bg-white p-2 rounded-lg">
-      <QRCode
-        size={100}
-        style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-        value="https://wa.me/639218607106"
-        bgColor="#ffffff"
-        fgColor="#111827" 
-      />
-    </div>
+{/* Dropdown Menu Window - Fluid Right Side Boundary Alignment */}
+<div 
+  className={`absolute right-0 md:left-1/2 md:-translate-x-1/2 md:right-auto top-[100%] w-20 z-50 pt-1 transition-all duration-200 ${
+    isLangOpen 
+      ? 'opacity-100 scale-100 pointer-events-auto' 
+      : 'opacity-0 scale-95 pointer-events-none md:group-hover:opacity-100 md:group-hover:scale-100 md:group-hover:pointer-events-auto'
+  }`}
+>
+  {/* Inner Box with clean theme styling */}
+  <div className="p-1 w-full bg-white border rounded-xl shadow-xl flex flex-col dark:bg-gray-900 dark:border-gray-800">
+    {SUPPORTED_LOCALES.map(l => (
+      <button
+        key={l}
+        type="button"
+        onClick={() => {
+          setLanguage(l as Locale);
+          setIsLangOpen(false);
+        }}
+        className={`w-full text-center py-1.5 text-xs font-medium tracking-wide rounded-lg uppercase transition-colors ${
+          current === l
+            ? isDark
+              ? 'bg-gray-800 text-white font-semibold'
+              : 'bg-gray-100 text-gray-900 font-semibold'
+            : isDark
+            ? 'text-gray-400 hover:bg-gray-800/60 hover:text-white'
+            : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+        }`}
+      >
+        {l.toUpperCase()}
+      </button>
+    ))}
   </div>
 </div>
-          {/* Language selector */}
-          <select
-            value={current}
-            onChange={e => setLanguage(e.target.value as Locale)}
-            className={`ml-2 p-1 sm:p-1.5 rounded-md border focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-              isDark ? 'bg-gray-800 border-gray-700 text-gray-200' : 'bg-white border-gray-300 text-gray-800'
-            }`}
-            aria-label="Select language"
-          >
-            {SUPPORTED_LOCALES.map(l => (
-              <option key={l} value={l}>
-                {l.toUpperCase()}
-              </option>
-            ))}
-          </select>
+</div>
         </div>
       </div>
     </header>
