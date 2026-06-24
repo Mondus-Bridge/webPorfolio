@@ -21,13 +21,13 @@ export default function Footer() {
         {/* Right Side / Bottom on Mobile: Navigation Links */}
         <div className="flex items-center gap-6 text-sm font-medium">
           <a 
-            href="mailto:ilnur@example.com" 
+            href="mailto:i.gabitov2077@gmail.com" 
             className={`transition-colors ${isDark ? 'hover:text-[#00c8aa]' : 'hover:text-green-600'}`}
           >
             {t('nav.email')}
           </a>
           <a 
-            href="https://github.com/ilnur" 
+            href="https://github.com/Mondus-Bridge" 
             target="_blank" 
             rel="noopener noreferrer" 
             className={`transition-colors ${isDark ? 'hover:text-[#00c8aa]' : 'hover:text-green-600'}`}
@@ -35,7 +35,7 @@ export default function Footer() {
             {t('nav.github')}
           </a>
           <a 
-            href="https://linkedin.com/in/ilnur" 
+            href="https://www.linkedin.com/in/ilnur-gabitov/" 
             target="_blank" 
             rel="noopener noreferrer" 
             className={`transition-colors ${isDark ? 'hover:text-[#00c8aa]' : 'hover:text-green-600'}`}
