@@ -1,0 +1,48 @@
+/* 1. Core Framework Reset (Must be line 1) */
+@import "tailwindcss";
+
+/* 2. JavaScript Plugins */
+@plugin "@tailwindcss/typography"; 
+
+/* 3. Global Variants (Must sit outside the @theme block!) */
+@variant dark (&:where(.dark, .dark *));
+
+/* 4. Web Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import '@fontsource/playfair-display/index.css';
+@import '@fontsource/inter/index.css';
+@import '@fontsource/jetbrains-mono/index.css';
+
+
+/* 5. Pure Custom Variables Configuration */
+@theme {
+  --font-sans: 'Roboto', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* 6. Functional CSS Base & Resets Layer */
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-sans);
+    background-color: #ffffff;
+    color: #111827;
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+
+  html.dark {
+    background-color: #0b0f19;
+    color: #f9fafb;
+  }
+  
+  html, body, .custom-pointer {
+    cursor: url('/cursor.cur'), default !important;
+  }
+
+  a, button {
+    cursor: url('/pointer.cur'), pointer !important;
+  }
+}
