@@ -8,11 +8,14 @@ import { useTranslation } from 'react-i18next';
 import { useLocale, SUPPORTED_LOCALES, Locale } from '../../hooks/useLocale';
 import QrIcon from './icons/QrIcon';
 import QRCode from 'react-qr-code';
+import { useState } from 'react';
+import { localeFlag } from './localeFlag';
 
 export default function Header() {
   const { isDark, toggle } = useTheme();
   const { t } = useTranslation();
   const { current, setLanguage } = useLocale();
+  const [langOpen, setLangOpen] = useState(false);
   const location = useLocation();
   const [isQrOpen, setIsQrOpen] = React.useState(false);
   const [isLangOpen, setIsLangOpen] = React.useState(false);
@@ -159,7 +162,8 @@ export default function Header() {
     } ${isLangOpen ? (isDark ? 'border-gray-600' : 'border-gray-400') : ''}`}
     aria-label="Toggle language menu"
   >
-    {current}
+      <span className={`fi fi-${localeFlag[current]}`} />
+      <span className="ml-1 hidden xs:inline">{current.toUpperCase()}</span>
   </button>
 
   {/* Click Invisible Overlay Backdrop for Mobile Dismissal */}
@@ -198,7 +202,8 @@ export default function Header() {
             : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
         }`}
       >
-        {l.toUpperCase()}
+        <span className={`fi fi-${localeFlag[l]}`} />
+        <span className="ml-1">{l.toUpperCase()}</span>
       </button>
     ))}
   </div>

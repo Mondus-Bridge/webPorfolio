@@ -1,6 +1,8 @@
 /* 1. Core Framework Reset (Must be line 1) */
 @import "tailwindcss";
 
+@import "flag-icons/css/flag-icons.min.css";
+
 /* 2. JavaScript Plugins */
 @plugin "@tailwindcss/typography"; 
 

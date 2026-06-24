@@ -15,7 +15,7 @@ export default function Footer() {
         
         {/* Left Side / Top on Mobile: Copyright */}
         <p className="text-sm tracking-wide">
-          © {new Date().getFullYear()} Ilnur. {t('footer.rights')}
+          © {new Date().getFullYear()} Ilnur QA. {t('footer.rights')}
         </p>
         
         {/* Right Side / Bottom on Mobile: Navigation Links */}
