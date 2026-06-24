@@ -1,5 +1,16 @@
 {
-  "welcome": "欢迎",
-  "about": "关于",
-  "contact": "联系"
+  "home.title": "全栈首席 QA 工程师",
+  "home.description": "我将金融驱动的分析严谨性与现代测试自动化（Playwright、CI/CD）相结合，以更快地发布版本，将生产缺陷降低 90%，并指导远程工程团队。",
+  "home.coreExpertise": "核心专长",
+  "article.title": "文章标题",
+  "article.placeholder": "这是占位符文章页面。请替换为真实内容。",
+  "nav.resume": "简历",
+  "nav.article": "文章",
+  "nav.projects": "项目",
+  "nav.email": "电子邮件",
+  "nav.github": "GitHub",
+  "nav.linkedin": "LinkedIn",
+  "footer.rights": "版权所有。",
+  "projects.title": "项目",
+  "projects.placeholder": "项目列表将在此处显示。请替换为实际项目详情。"
 }

@@ -1,5 +1,16 @@
 {
-  "welcome": "Bienvenue",
-  "about": "À propos",
-  "contact": "Contact"
+  "home.title": "Ingénieur QA Lead Full‑Stack",
+  "home.description": "Je combine la rigueur analytique axée sur la finance avec l’automatisation de tests moderne (Playwright, CI/CD) pour livrer des versions plus rapides, réduire les bugs de production de 90 % et encadrer des équipes d’ingénierie à distance.",
+  "home.coreExpertise": "Expertise principale",
+  "article.title": "Titre de l'article",
+  "article.placeholder": "Ceci est une page d'article factice. Remplacez-la par un vrai contenu.",
+  "nav.resume": "CV",
+  "nav.article": "Articles",
+  "nav.projects": "Projets",
+  "nav.email": "Email",
+  "nav.github": "GitHub",
+  "nav.linkedin": "LinkedIn",
+  "footer.rights": "Tous droits réservés.",
+  "projects.title": "Projets",
+  "projects.placeholder": "La liste des projets apparaîtra ici. Remplacez-la par les détails réels du projet."
 }

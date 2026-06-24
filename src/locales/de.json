@@ -1,5 +1,16 @@
 {
-  "welcome": "Willkommen",
-  "about": "Über",
-  "contact": "Kontakt"
+  "home.title": "Lead QA Engineer Full‑Stack",
+  "home.description": "Ich kombiniere finanzgetriebene analytische Strenge mit moderner Testautomatisierung (Playwright, CI/CD), um schnellere Releases zu liefern, Produktionsbugs um 90 % zu reduzieren und remote Engineering‑Teams zu betreuen.",
+  "home.coreExpertise": "Kernkompetenz",
+  "article.title": "Artikeltitel",
+  "article.placeholder": "Dies ist eine Platzhalter‑Artikelseite. Ersetzen Sie sie durch echten Inhalt.",
+  "nav.resume": "Lebenslauf",
+  "nav.article": "Artikel",
+  "nav.projects": "Projekte",
+  "nav.email": "E‑Mail",
+  "nav.github": "GitHub",
+  "nav.linkedin": "LinkedIn",
+  "footer.rights": "Alle Rechte vorbehalten.",
+  "projects.title": "Projekte",
+  "projects.placeholder": "Eine Projektliste erscheint hier. Ersetzen Sie sie durch die tatsächlichen Projektdetails."
 }

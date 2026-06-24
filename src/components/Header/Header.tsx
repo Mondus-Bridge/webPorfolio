@@ -5,7 +5,7 @@ import SunIcon from './icons/SunIcon';
 import MoonIcon from './icons/MoonIcon';
 import { useTheme } from '../../context/ThemeContext';
 import { useTranslation } from 'react-i18next';
-import { useLocale } from '../../hooks/useLocale';
+import { useLocale, SUPPORTED_LOCALES, Locale } from '../../hooks/useLocale';
 
 export default function Header() {
   const { isDark, toggle } = useTheme();
@@ -85,14 +85,17 @@ export default function Header() {
           {/* Language selector */}
           <select
             value={current}
-            onChange={(e) => setLanguage(e.target.value as 'en' | 'ru')}
+            onChange={e => setLanguage(e.target.value as Locale)}
             className={`ml-2 p-1 sm:p-1.5 rounded-md border focus:outline-none focus:ring-2 focus:ring-offset-2 ${
               isDark ? 'bg-gray-800 border-gray-700 text-gray-200' : 'bg-white border-gray-300 text-gray-800'
             }`}
             aria-label="Select language"
           >
-            <option value="en">EN</option>
-            <option value="ru">RU</option>
+            {SUPPORTED_LOCALES.map(l => (
+              <option key={l} value={l}>
+                {l.toUpperCase()}
+              </option>
+            ))}
           </select>
         </div>
       </div>

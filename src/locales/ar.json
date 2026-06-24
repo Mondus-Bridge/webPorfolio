@@ -1,5 +1,16 @@
 {
-  "welcome": "أهلاً وسهلاً",
-  "about": "حول",
-  "contact": "اتصال"
+  "home.title": "مهندس اختبار رئيسي للواجهة الكاملة",
+  "home.description": "أجمع بين الصرامة التحليلية المدفوعة بالمالية وأتمتة الاختبار الحديثة (Playwright, CI/CD) لتسريع الإصدارات، خفض الأخطاء الإنتاجية بنسبة 90٪، وتوجيه فرق الهندسة عن بُعد.",
+  "home.coreExpertise": "الخبرة الأساسية",
+  "article.title": "عنوان المقال",
+  "article.placeholder": "هذه صفحة مقالة بديلة. استبدلها بمحتوى حقيقي.",
+  "nav.resume": "السيرة الذاتية",
+  "nav.article": "مقالات",
+  "nav.projects": "مشاريع",
+  "nav.email": "البريد الإلكتروني",
+  "nav.github": "GitHub",
+  "nav.linkedin": "LinkedIn",
+  "footer.rights": "جميع الحقوق محفوظة.",
+  "projects.title": "مشاريع",
+  "projects.placeholder": "ستظهر قائمة المشاريع هنا. استبدلها بتفاصيل المشروع الفعلية."
 }

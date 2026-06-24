@@ -1,29 +1,36 @@
-import React, { useState, useEffect } from 'react';
+// src/pages/Resume.tsx
+import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import rehypeSanitize from 'rehype-sanitize';
 import rehypeHighlight from 'rehype-highlight';
-
 import enResume from '../resume/Resume.en.md?raw';
 import ruResume from '../resume/Resume.ru.md?raw';
-import { useLocale } from '../hooks/useLocale'; // Or '../context/LanguageContext'
+import arResume from '../resume/Resume.ar.md?raw';
+import esResume from '../resume/Resume.es.md?raw';
+import frResume from '../resume/Resume.fr.md?raw';
+import deResume from '../resume/Resume.de.md?raw';
+import zhResume from '../resume/Resume.zh.md?raw';
+import { useLocale } from '../hooks/useLocale';
 
 export default function Resume() {
-  const { current } = useLocale(); // Verify if this is 'current' or 'locale'
-  const [md, setMd] = useState(enResume);
+  const { current } = useLocale();
 
-  // Use an explicit useEffect to catch state broadcasts across pages
-  useEffect(() => {
-    if (current === 'ru') {
-      setMd(ruResume);
-    } else {
-      setMd(enResume);
-    }
-  }, [current]); // Tracks the language switch instantly across route links!
+  const resumeMap: Record<string, string> = {
+    ru: ruResume,
+    ar: arResume,
+    es: esResume,
+    fr: frResume,
+    de: deResume,
+    zh: zhResume,
+    en: enResume,
+  };
+
+  const md = resumeMap[current] ?? enResume;
 
   return (
-    <section className="prose lg:prose-xl dark:prose-invert mx-auto py-12 px-4">
+    <section className="prose lg:prose-xl dark:prose-invert mx-auto py-12">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw, rehypeSanitize, rehypeHighlight]}
