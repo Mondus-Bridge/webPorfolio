@@ -1,8 +1,4 @@
-
----
-title: "The Last Guard: Why QA Is More Critical Than Ever"
-description: "Generative AI assistants now write 10× the volume of software we shipped a few years ago. Teams push features at breakneck speed, but the flood brings hidden logical flaws..."
----
+# The Last Guard: Why QA Is More Critical Than Ever in the AI Era
 
 2026 has turned code‑production into a torrent. Generative‑AI assistants now write **10×** the volume of software we shipped a few years ago. Teams push features at breakneck speed, but the flood brings hidden logical flaws, architectural blind spots, and regressions that surface only in production.
 

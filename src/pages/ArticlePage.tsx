@@ -34,7 +34,7 @@ export default function ArticlePage() {
   return (
     <section className="prose lg:prose-xl dark:prose-invert mx-auto py-12">
       {article.cover && (
-        <img src={article.cover} alt="Cover" className="w-full h-48 object-cover mb-6" />
+        <img src={article.cover} alt="Cover" className="w-full h-auto object-cover"/>
       )}
       <h1 className="flex items-center gap-2">
         {article.title}

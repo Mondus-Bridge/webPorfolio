@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "react-use-hooks": {
+      "source": "arindampradhan/react-use-skills",
+      "sourceType": "github",
+      "skillPath": "skills/react-use-hooks/SKILL.md",
+      "computedHash": "62296680df4576d03c4bb5a65975b61910e658b3af917b54aab12b594b843f95"
+    }
+  }
+}
