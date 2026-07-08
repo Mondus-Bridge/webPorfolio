@@ -11,6 +11,7 @@ export default defineConfig({
     },
   },
   plugins: [react()],
+  base: '/webPorfolio/',
   server: {
     port: 5173,
   },

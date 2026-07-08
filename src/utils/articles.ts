@@ -10,8 +10,11 @@ export interface ArticleMeta {
   author: { name: string; avatar: string }; // avatar path to SVG
   dateAdded: string; // ISO string
   cover?: string; // optional SVG illustration path
-  description?: string; // 💡 Kept optional to match the type system beautifully
+  description?: string; // Optional field for summary preview
 }
+
+/** Type representing an article metadata merged with its raw body content */
+export type FullArticle = ArticleMeta & { content: string };
 
 // ---------------------------------------------------------------------------
 // Static metadata map – add a new entry here when you add a markdown file.
@@ -41,58 +44,61 @@ function extractCleanPreview(rawMarkdown: string): string {
 
   let cleanText = rawMarkdown.trim();
 
-  // 1. If the markdown starts with frontmatter (---), strip the entire configuration block out
+  // 1. Strip YAML frontmatter blocks (--- ... ---)
   if (cleanText.startsWith('---')) {
-    // Find the closing triple dashes after the opening ones
     const nextDashIndex = cleanText.indexOf('---', 3);
     if (nextDashIndex !== -1) {
-      // Slice everything after the closing dashes to get only the real content body
       cleanText = cleanText.slice(nextDashIndex + 3).trim();
     }
   }
 
-  // 2. Remove standard markdown titles/headers (# H1, ## H2, etc)
+  // 2. Remove header lines (# H1, ## H2, etc)
   cleanText = cleanText.replace(/^#+\s+.*$/gm, '');
 
-  // 3. Clean out image links, bold symbols, and inline code markers
+  // 3. Clean out images, links, markdown formatting markers, and extra whitespaces
   cleanText = cleanText
-    .replace(/!?\[([^\]]*)]\([^)]*\)/g, '$1') // Strip Markdown links/images
+    .replace(/!?\[([^\]]*)]\([^)]*\)/g, '$1') // Strip links/images
     .replace(/[\*_`~]/g, '')                 // Strip bold, italics, code styling
-    .replace(/\s+/g, ' ')                     // Normalize spacing tabs and line breaks
+    .replace(/\s+/g, ' ')                     // Normalize line breaks and spaces
     .trim();
 
-  // 4. Return a clean text preview chunk safely limited to 200 characters
+  // 4. Return clean summary truncated to 200 characters
   return cleanText.length > 200 ? cleanText.slice(0, 197) + '...' : cleanText;
 }
 
 /** Load all markdown files as raw strings and merge with the static metadata. */
-export const getAllArticles = async (): Promise<(ArticleMeta & { content: string })[]> => {
-  const loaders = import.meta.glob('../articles/*.md', { as: 'raw' });
+export const getAllArticles = async (): Promise<FullArticle[]> => {
+  const loaders = import.meta.glob('../articles/*.md', { query: '?raw', import: 'default' });
+
   const entries = await Promise.all(
-    Object.entries(loaders).map(async ([path, load]) => {
+    Object.entries(loaders).map(async ([path, load]): Promise<FullArticle | null> => {
       const slug = path.split('/').pop()!.replace('.md', '');
       const content = await (load as () => Promise<string>)();
       const base = meta[slug];
       if (!base) return null;
 
-      // Extract a pristine description snippet directly from the markdown content body
       const description = extractCleanPreview(content);
 
-      return { ...base, description, content };
+      return { 
+        ...base, 
+        description, 
+        content 
+      };
     })
   );
-  
-  // ⚡️ FIXED TYPE MATCH: Stripped out the strict description typing restriction inside the filter guard
-  return entries.filter((e): e is (ArticleMeta & { content: string }) => e !== null);
+
+  // Filter out null values cleanly using the FullArticle type predicate
+  return entries.filter((e): e is FullArticle => Boolean(e));
 };
 
 /** Load a single article by slug. Returns null if not found. */
 export const getArticle = async (
   slug: string
-): Promise<(ArticleMeta & { content: string }) | null> => {
-  const loaders = import.meta.glob('../articles/*.md', { as: 'raw' });
+): Promise<FullArticle | null> => {
+  const loaders = import.meta.glob('../articles/*.md', { query: '?raw', import: 'default' });
   const loader = loaders[`../articles/${slug}.md`] as (() => Promise<string>) | undefined;
   if (!loader) return null;
+
   const content = await loader();
   const base = meta[slug];
   if (!base) return null;
