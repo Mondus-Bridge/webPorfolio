@@ -1,5 +1,6 @@
 // src/pages/Resume.tsx
-import React from 'react';
+import React, { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
@@ -15,8 +16,10 @@ import zhResume from '../resume/Resume.zh.md?raw';
 import { useLocale } from '../hooks/useLocale';
 
 export default function Resume() {
-  const { current } = useLocale();
+  const resumeRef = useRef<HTMLDivElement>(null);
 
+  const { current } = useLocale();
+  const { t } = useTranslation();
   const resumeMap: Record<string, string> = {
     ru: ruResume,
     ar: arResume,
@@ -30,13 +33,42 @@ export default function Resume() {
   const md = resumeMap[current] ?? enResume;
 
   return (
-    <section className="prose lg:prose-xl dark:prose-invert mx-auto py-12">
+      <section ref={resumeRef} className="prose lg:prose-xl dark:prose-invert mx-auto py-12">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw, rehypeSanitize, rehypeHighlight]}
       >
         {md}
-      </ReactMarkdown>
-    </section>
-  );
+        </ReactMarkdown>
+        <div className="mt-6 flex gap-4">
+          <button
+            className="no-print px-4 py-2 rounded-md bg-green-600 text-white hover:bg-green-500 transition-colors print:hidden"
+            onClick={() => {
+              const printWindow = window.open('', '_blank');
+              if (!printWindow) return;
+              // Clone resume section and remove the button before printing
+              const clone = resumeRef.current?.cloneNode(true) as HTMLElement;
+              clone?.querySelector('.no-print')?.remove();
+              const content = clone?.innerHTML ?? '';
+              printWindow.document.write(`
+                <html>
+                <head>
+                  <title>Resume</title>
+                  <style>
+                    body { margin: 0; padding: 1rem; font-family: system-ui, sans-serif; }
+                  </style>
+                </head>
+                <body>${content}</body>
+                </html>
+              `);
+              printWindow.document.close();
+              printWindow.focus();
+              printWindow.print();
+            }}
+          >
+              {t('resume.downloadPdf')}
+          </button>
+        </div>
+      </section>
+    );
 }
