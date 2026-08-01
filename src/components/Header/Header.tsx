@@ -1,4 +1,5 @@
-import React from 'react';
+// src/components/Header.tsx
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import GesturesIcon from './icons/GesturesIcon';
 import SunIcon from './icons/SunIcon';
@@ -8,22 +9,22 @@ import { useTranslation } from 'react-i18next';
 import { useLocale, SUPPORTED_LOCALES, Locale } from '../../hooks/useLocale';
 import QrIcon from './icons/QrIcon';
 import QRCode from 'react-qr-code';
-import { useState } from 'react';
 import { localeFlag } from './localeFlag';
 
 export default function Header() {
   const { isDark, toggle } = useTheme();
   const { t } = useTranslation();
   const { current, setLanguage } = useLocale();
-  const [langOpen, setLangOpen] = useState(false);
   const location = useLocation();
-  const [isQrOpen, setIsQrOpen] = React.useState(false);
-  const [isLangOpen, setIsLangOpen] = React.useState(false);
-
+  
+  const [isQrOpen, setIsQrOpen] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
+  // Active QR platform state: 'whatsapp' | 'telegram'
+  const [activeQrTab, setActiveQrTab] = useState<'whatsapp' | 'telegram'>('whatsapp');
 
   const NavLink = ({ to, children }: { to: string; children: React.ReactNode }) => {
     const isActive = location.pathname === to;
-  return ( <>
+    return (
       <Link
         to={to}
         className={`relative py-1.5 text-xs sm:text-sm font-medium tracking-wide transition-colors duration-200 shrink-0 ${
@@ -39,14 +40,16 @@ export default function Header() {
         {children}
         {isActive && (
           <span
-            className={`absolute bottom-0 left-0 right-0 h-[2px] rounded-full ${isDark ? 'bg-teal-400' : 'bg-green-600'}`}
+            className={`absolute bottom-0 left-0 right-0 h-[2px] rounded-full ${
+              isDark ? 'bg-teal-400' : 'bg-green-600'
+            }`}
           />
         )}
       </Link>
-</> );
+    );
   };
 
-  return ( <>
+  return (
     <header
       className={`border-b sticky top-0 z-50 transition-all duration-300 backdrop-blur-md ${
         isDark
@@ -78,7 +81,10 @@ export default function Header() {
             <NavLink to="/article">{t('nav.article')}</NavLink>
             <NavLink to="/projects">{t('nav.projects')}</NavLink>
           </nav>
+          
           <span className={`hidden xs:inline-block h-4 w-[1px] ${isDark ? 'bg-gray-800' : 'bg-gray-200'}`} aria-hidden="true" />
+          
+          {/* Dark Mode Toggle */}
           <button
             onClick={toggle}
             className={`p-1.5 sm:p-2 rounded-lg sm:rounded-xl transition-all duration-200 focus:outline-none border active:scale-95 shrink-0 ${
@@ -90,128 +96,165 @@ export default function Header() {
           >
             {isDark ? <SunIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> : <MoonIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
           </button>
-      {/* QR Code Button - Hybrid Interaction */}
-      <div className="relative group">
-        <button
-          onClick={() => {
-            // 📱 Touch detection: Only toggle state if the device supports touch or is a mobile viewport width
-            const isMobileOrTouch = window.matchMedia("(max-width: 768px)").matches || ('ontouchstart' in window);
-            if (isMobileOrTouch) {
-              setIsQrOpen(!isQrOpen);
-            }
-          }}
-          className={`p-1.5 sm:p-2 rounded-lg sm:rounded-xl transition-all duration-200 focus:outline-none border active:scale-95 shrink-0 ${
-            isDark
-              ? 'bg-gray-900 border-gray-800 text-teal-400 hover:text-teal-300'
-              : 'bg-gray-50 border-gray-200 text-teal-600 hover:text-teal-700'
-          } ${isQrOpen ? (isDark ? 'border-teal-400' : 'border-teal-600') : ''}`}
-          aria-label="Open WhatsApp QR code"
-        >
-          <QrIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-        </button>
 
-        {/* Only render the click backdrop overlay on mobile/touch screens */}
-        {isQrOpen && (
-          <div 
-            className="fixed inset-0 z-40 md:hidden" 
-            onClick={() => setIsQrOpen(false)} 
-          />
-        )}
+          {/* Combined QR Code Button (WhatsApp + Telegram) */}
+          <div className="relative group">
+            <button
+              onClick={() => {
+                const isMobileOrTouch = window.matchMedia("(max-width: 768px)").matches || ('ontouchstart' in window);
+                if (isMobileOrTouch) {
+                  setIsQrOpen(!isQrOpen);
+                }
+              }}
+              className={`p-1.5 sm:p-2 rounded-lg sm:rounded-xl transition-all duration-200 focus:outline-none border active:scale-95 shrink-0 ${
+                isDark
+                  ? 'bg-gray-900 border-gray-800 text-teal-400 hover:text-teal-300'
+                  : 'bg-gray-50 border-gray-200 text-teal-600 hover:text-teal-700'
+              } ${isQrOpen ? (isDark ? 'border-teal-400' : 'border-teal-600') : ''}`}
+              aria-label="Open Contact QR Code"
+            >
+              <QrIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+            </button>
 
-        {/* Pop‑over Window */}
-        <div 
-          className={`absolute top-full mt-2 left-1/2 -translate-x-1/2 w-40 p-4 bg-white border rounded-xl shadow-xl z-50 flex flex-col items-center justify-center transition-all duration-200 dark:bg-gray-900 dark:border-gray-800 ${
-            isQrOpen 
-              ? 'opacity-100 scale-100 pointer-events-auto' 
-              : 'opacity-0 scale-95 pointer-events-none md:group-hover:opacity-100 md:group-hover:scale-100 md:group-hover:pointer-events-auto'
-          }`}
-        >
-          <div className={`text-center text-xs font-bold tracking-wide uppercase mb-3 transition-colors ${
-            isDark ? 'text-teal-400' : 'text-teal-600'
-          }`}>
-            WhatsApp
+            {/* Mobile Touch Overlay Backdrop */}
+            {isQrOpen && (
+              <div 
+                className="fixed inset-0 z-40 md:hidden" 
+                onClick={() => setIsQrOpen(false)} 
+              />
+            )}
+
+            {/* 
+              Pop-over Window Container:
+              1. Added `pt-2` to remove mouse-leave gap on desktop hover.
+              2. Switched positioning to `right-0` by default (for mobile) and centered on larger screens (`sm:left-1/2 sm:-translate-x-1/2 sm:right-auto`).
+            */}
+            <div 
+              className={`absolute top-full right-0 sm:left-1/2 sm:-translate-x-1/2 sm:right-auto w-48 pt-2 z-50 transition-all duration-200 ${
+                isQrOpen 
+                  ? 'opacity-100 scale-100 pointer-events-auto' 
+                  : 'opacity-0 scale-95 pointer-events-none md:group-hover:opacity-100 md:group-hover:scale-100 md:group-hover:pointer-events-auto'
+              }`}
+            >
+              {/* Inner Box Card */}
+              <div className="p-3 bg-white border rounded-xl shadow-xl flex flex-col items-center justify-center dark:bg-gray-900 dark:border-gray-800">
+                
+                {/* Tab Selector */}
+                <div className="flex w-full p-1 mb-3 rounded-lg bg-gray-100 dark:bg-gray-800 gap-1 text-[11px] font-semibold">
+                  <button
+                    type="button"
+                    onClick={() => setActiveQrTab('whatsapp')}
+                    className={`flex-1 py-1 text-center rounded-md transition-colors ${
+                      activeQrTab === 'whatsapp'
+                        ? 'bg-white dark:bg-gray-900 text-green-600 dark:text-green-400 shadow-sm'
+                        : 'text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
+                    }`}
+                  >
+                    WhatsApp
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setActiveQrTab('telegram')}
+                    className={`flex-1 py-1 text-center rounded-md transition-colors ${
+                      activeQrTab === 'telegram'
+                        ? 'bg-white dark:bg-gray-900 text-sky-500 dark:text-sky-400 shadow-sm'
+                        : 'text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
+                    }`}
+                  >
+                    Telegram
+                  </button>
+                </div>
+
+                {/* QR Code Frame */}
+                <a
+                  href={activeQrTab === 'whatsapp' ? 'https://wa.me/639218607106' : 'https://t.me/cattestandfurious'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex flex-col items-center justify-center bg-white p-2 rounded-lg group/qr"
+                >
+                  <QRCode
+                    size={110}
+                    style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                    value={
+                      activeQrTab === 'whatsapp' 
+                        ? 'https://wa.me/639218607106' 
+                        : 'https://t.me/cattestandfurious'
+                    }
+                    bgColor="#ffffff"
+                    fgColor="#111827" 
+                  />
+                  <span className="mt-2 text-[10px] text-gray-500 group-hover/qr:text-gray-900 font-medium">
+                    {activeQrTab === 'whatsapp' ? '+63 921 860 7106' : '@cattestandfurious'}
+                  </span>
+                </a>
+
+              </div>
+            </div>
           </div>
-          
-          <div className="w-full flex items-center justify-center bg-white p-2 rounded-lg">
-            <QRCode
-              size={100}
-              style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-              value="https://wa.me/639218607106"
-              bgColor="#ffffff"
-              fgColor="#111827" 
-            />
+
+          {/* Custom Language Selector */}
+          <div className="relative group ml-1"> 
+            <button
+              type="button"
+              onClick={() => {
+                const isMobileOrTouch = window.matchMedia("(max-width: 768px)").matches || ('ontouchstart' in window);
+                if (isMobileOrTouch) {
+                  setIsLangOpen(!isLangOpen);
+                }
+              }}
+              className={`px-2.5 py-1.5 text-xs font-semibold tracking-wider uppercase rounded-lg border transition-all duration-200 focus:outline-none min-w-[42px] text-center active:scale-95 ${
+                isDark
+                  ? 'bg-gray-900 border-gray-800 text-gray-200 hover:text-white'
+                  : 'bg-white border-gray-300 text-gray-800 hover:bg-gray-50'
+              } ${isLangOpen ? (isDark ? 'border-gray-600' : 'border-gray-400') : ''}`}
+              aria-label="Toggle language menu"
+            >
+              <span className={`fi fi-${localeFlag[current]}`} />
+              <span className="ml-1 hidden xs:inline">{current.toUpperCase()}</span>
+            </button>
+
+            {isLangOpen && (
+              <div 
+                className="fixed inset-0 z-40 md:hidden" 
+                onClick={() => setIsLangOpen(false)} 
+              />
+            )}
+
+            <div 
+              className={`absolute right-0 md:left-1/2 md:-translate-x-1/2 md:right-auto top-[100%] w-20 z-50 pt-1 transition-all duration-200 ${
+                isLangOpen 
+                  ? 'opacity-100 scale-100 pointer-events-auto' 
+                  : 'opacity-0 scale-95 pointer-events-none md:group-hover:opacity-100 md:group-hover:scale-100 md:group-hover:pointer-events-auto'
+              }`}
+            >
+              <div className="p-1 w-full bg-white border rounded-xl shadow-xl flex flex-col dark:bg-gray-900 dark:border-gray-800">
+                {SUPPORTED_LOCALES.map(l => (
+                  <button
+                    key={l}
+                    type="button"
+                    onClick={() => {
+                      setLanguage(l as Locale);
+                      setIsLangOpen(false);
+                    }}
+                    className={`w-full text-center py-1.5 text-xs font-medium tracking-wide rounded-lg uppercase transition-colors ${
+                      current === l
+                        ? isDark
+                          ? 'bg-gray-800 text-white font-semibold'
+                          : 'bg-gray-100 text-gray-900 font-semibold'
+                        : isDark
+                        ? 'text-gray-400 hover:bg-gray-800/60 hover:text-white'
+                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                    }`}
+                  >
+                    <span className={`fi fi-${localeFlag[l]}`} />
+                    <span className="ml-1">{l.toUpperCase()}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-{/* Custom Language Selector - Hybrid Interaction */}
-<div className="relative group ml-2"> 
-  
-  {/* Trigger Button */}
-  <button
-    type="button"
-    onClick={() => {
-      const isMobileOrTouch = window.matchMedia("(max-width: 768px)").matches || ('ontouchstart' in window);
-      if (isMobileOrTouch) {
-        setIsLangOpen(!isLangOpen);
-      }
-    }}
-    className={`px-2.5 py-1.5 text-xs font-semibold tracking-wider uppercase rounded-lg border transition-all duration-200 focus:outline-none min-w-[42px] text-center active:scale-95 ${
-      isDark
-        ? 'bg-gray-900 border-gray-800 text-gray-200 hover:text-white'
-        : 'bg-white border-gray-300 text-gray-800 hover:bg-gray-50'
-    } ${isLangOpen ? (isDark ? 'border-gray-600' : 'border-gray-400') : ''}`}
-    aria-label="Toggle language menu"
-  >
-      <span className={`fi fi-${localeFlag[current]}`} />
-      <span className="ml-1 hidden xs:inline">{current.toUpperCase()}</span>
-  </button>
-
-  {/* Click Invisible Overlay Backdrop for Mobile Dismissal */}
-  {isLangOpen && (
-    <div 
-      className="fixed inset-0 z-40 md:hidden" 
-      onClick={() => setIsLangOpen(false)} 
-    />
-  )}
-
-{/* Dropdown Menu Window - Fluid Right Side Boundary Alignment */}
-<div 
-  className={`absolute right-0 md:left-1/2 md:-translate-x-1/2 md:right-auto top-[100%] w-20 z-50 pt-1 transition-all duration-200 ${
-    isLangOpen 
-      ? 'opacity-100 scale-100 pointer-events-auto' 
-      : 'opacity-0 scale-95 pointer-events-none md:group-hover:opacity-100 md:group-hover:scale-100 md:group-hover:pointer-events-auto'
-  }`}
->
-  {/* Inner Box with clean theme styling */}
-  <div className="p-1 w-full bg-white border rounded-xl shadow-xl flex flex-col dark:bg-gray-900 dark:border-gray-800">
-    {SUPPORTED_LOCALES.map(l => (
-      <button
-        key={l}
-        type="button"
-        onClick={() => {
-          setLanguage(l as Locale);
-          setIsLangOpen(false);
-        }}
-        className={`w-full text-center py-1.5 text-xs font-medium tracking-wide rounded-lg uppercase transition-colors ${
-          current === l
-            ? isDark
-              ? 'bg-gray-800 text-white font-semibold'
-              : 'bg-gray-100 text-gray-900 font-semibold'
-            : isDark
-            ? 'text-gray-400 hover:bg-gray-800/60 hover:text-white'
-            : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
-        }`}
-      >
-        <span className={`fi fi-${localeFlag[l]}`} />
-        <span className="ml-1">{l.toUpperCase()}</span>
-      </button>
-    ))}
-  </div>
-</div>
-</div>
         </div>
       </div>
     </header>
-
-</> );
+  );
 }
