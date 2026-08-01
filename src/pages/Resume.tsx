@@ -66,7 +66,7 @@ export default function Resume() {
               printWindow.print();
             }}
           >
-              {t('resume.downloadPdf')}
+              {t('resume.downloadAsPdf')}
           </button>
         </div>
       </section>
