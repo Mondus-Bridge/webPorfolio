@@ -10,7 +10,10 @@ export const useLocale = () => {
   // useTranslation() automatically subscribes this hook to i18next state changes!
   const { i18n } = useTranslation();
 
-  const current = (i18n.language || 'en') as Locale;
+  // Normalize the i18n language to a base locale (e.g. "en-US" → "en")
+  const rawLang = (i18n.language || 'en') as string;
+  const baseLang = rawLang.split('-')[0].toLowerCase();
+  const current = (SUPPORTED_LOCALES.includes(baseLang as any) ? baseLang : 'en') as Locale;
 
   const setLanguage = useCallback((lang: Locale) => {
     i18n.changeLanguage(lang);
