@@ -2,13 +2,12 @@
 import React from 'react';
 import { useTheme } from '../../context/ThemeContext';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
+import { usePortfolioRole } from '../../hooks/usePortfolioRole';
 
 export default function Footer() {
   const { isDark } = useTheme();
   const { t } = useTranslation();
-  const { pathname } = useLocation();
-  const isPM = pathname.startsWith('/pm');
+  const { isPM } = usePortfolioRole();
   
   return (
     <footer className={`border-t py-8 mt-16 transition-colors ${

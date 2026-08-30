@@ -124,6 +124,7 @@ export default function Home({ variant = 'qa' }: HomeProps) {
       </section>
 
       {/* Intro Video Section */}
+      {!isPM && (
       <section className="w-full max-w-3xl mx-auto px-4 sm:px-6">
         <div className={`p-6 sm:p-8 rounded-2xl border transition-all ${
           isDark ? 'bg-gray-900/50 border-gray-800' : 'bg-gray-50/70 border-gray-100'
@@ -163,6 +164,7 @@ export default function Home({ variant = 'qa' }: HomeProps) {
           </button>
         </div>
       </section>
+      )}
 
       {/* Video Modal Window */}
       {isVideoOpen && (

@@ -10,13 +10,14 @@ import { useLocale, SUPPORTED_LOCALES, Locale } from '../../hooks/useLocale';
 import QrIcon from './icons/QrIcon';
 import QRCode from 'react-qr-code';
 import { localeFlag } from './localeFlag';
+import { usePortfolioRole } from '../../hooks/usePortfolioRole';
 
 export default function Header() {
   const { isDark, toggle } = useTheme();
   const { t } = useTranslation();
   const { current, setLanguage } = useLocale();
   const location = useLocation();
-  const isPM = location.pathname.startsWith('/pm');
+  const { isPM } = usePortfolioRole();
   
   const [isQrOpen, setIsQrOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
@@ -60,7 +61,7 @@ export default function Header() {
     >
       <div className="w-full max-w-3xl mx-auto px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-2 sm:gap-4">
         <Link
-          to={isPM ? '/pm/main' : '/'}
+          to={isPM ? '/pm/main' : '/qa/main'}
           className="flex items-center gap-2 sm:gap-3 group transition-transform duration-200 active:scale-95 shrink-0"
           aria-label="Home"
         >
