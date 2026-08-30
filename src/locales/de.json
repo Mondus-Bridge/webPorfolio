@@ -1,7 +1,20 @@
 {
   "home.title": "Lead QA Engineer Full‑Stack",
+  "home.titleTag": "Ilnur | Lead QA Engineer Full‑Stack",
   "home.description": "Ich kombiniere finanzgetriebene analytische Strenge mit moderner Testautomatisierung (Playwright, CI/CD), um schnellere Releases zu liefern, Produktionsbugs um 90 % zu reduzieren und remote Engineering‑Teams zu betreuen.",
   "home.coreExpertise": "Kernkompetenz",
+  "pm.home.title": "Produktmanager",
+  "pm.home.titleTag": "Ilnur | Produktmanager",
+  "pm.home.description": "Ich verwandle komplexe technische Produkte in klare Roadmaps und messbare Ergebnisse — und verbinde Engineering, Design und Business mit Erfahrung in QA, Delivery und Finanzen.",
+  "pm.home.coreExpertise": "Kernkompetenz",
+  "pm.home.skills": [
+    "Produktstrategie und Roadmaps",
+    "Stakeholder- und Teammanagement",
+    "Agile- und Scrum-Delivery",
+    "Anforderungserhebung und PRDs",
+    "Datengestützte Entscheidungsfindung",
+    "Funktionsübergreifende Koordination"
+  ],
   "home.video.overview": "Video‑Übersicht",
   "home.video.title": "Einleitung & berufliche Zusammenfassung",
   "nav.resume": "Lebenslauf",

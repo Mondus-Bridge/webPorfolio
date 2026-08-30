@@ -2,10 +2,13 @@
 import React from 'react';
 import { useTheme } from '../../context/ThemeContext';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 
 export default function Footer() {
   const { isDark } = useTheme();
   const { t } = useTranslation();
+  const { pathname } = useLocation();
+  const isPM = pathname.startsWith('/pm');
   
   return (
     <footer className={`border-t py-8 mt-16 transition-colors ${
@@ -15,7 +18,7 @@ export default function Footer() {
         
         {/* Left Side: Copyright */}
         <p className="text-sm tracking-wide">
-          © {new Date().getFullYear()} Ilnur QA. {t('footer.rights')}
+          © {new Date().getFullYear()} {isPM ? 'Ilnur PM' : 'Ilnur QA'}. {t('footer.rights')}
         </p>
         
         {/* Right Side: Social & Contact Links */}

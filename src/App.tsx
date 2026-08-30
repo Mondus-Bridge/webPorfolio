@@ -12,7 +12,9 @@ export default function App() {
     <Router>
       <Layout>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home variant="qa" />} />
+          <Route path="/qa/main" element={<Home variant="qa" />} />
+          <Route path="/pm/main" element={<Home variant="pm" />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/projects" element={<Projects />} />
         </Routes>

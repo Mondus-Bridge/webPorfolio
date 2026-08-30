@@ -1,7 +1,20 @@
 {
   "home.title": "Ingeniero de QA Lead Full‑Stack",
+  "home.titleTag": "Ilnur | Ingeniero de QA Lead Full‑Stack",
   "home.description": "Combino el rigor analítico impulsado por finanzas con la automatización de pruebas moderna (Playwright, CI/CD) para lanzar versiones más rápidas, reducir los bugs de producción en un 90 % y mentorizar equipos de ingeniería remotos.",
   "home.coreExpertise": "Experiencia principal",
+  "pm.home.title": "Product Manager",
+  "pm.home.titleTag": "Ilnur | Product Manager",
+  "pm.home.description": "Convierto productos técnicos complejos en hojas de ruta claras y resultados medibles, uniendo ingeniería, diseño y negocio con experiencia en QA, entrega y finanzas.",
+  "pm.home.coreExpertise": "Experiencia principal",
+  "pm.home.skills": [
+    "Estrategia de producto y hojas de ruta",
+    "Gestión de stakeholders y equipos",
+    "Entrega Agile y Scrum",
+    "Elicitación de requisitos y PRDs",
+    "Toma de decisiones basada en datos",
+    "Coordinación multifuncional"
+  ],
   "home.video.overview": "Resumen del video",
   "home.video.title": "Introducción y Resumen Profesional",
   "nav.resume": "Currículum",

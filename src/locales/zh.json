@@ -1,7 +1,20 @@
 {
   "home.title": "全栈首席 QA 工程师",
+  "home.titleTag": "伊尔努尔 | 全栈首席 QA 工程师",
   "home.description": "我将金融驱动的分析严谨性与现代测试自动化（Playwright、CI/CD）相结合，以更快地发布版本，将生产缺陷降低 90%，并指导远程工程团队。",
   "home.coreExpertise": "核心专长",
+  "pm.home.title": "产品经理",
+  "pm.home.titleTag": "伊尔努尔 | 产品经理",
+  "pm.home.description": "我将复杂的技术产品转化为清晰的路线图和可衡量的成果——凭借在 QA、交付和财务方面的经验，连接工程、设计与业务。",
+  "pm.home.coreExpertise": "核心专长",
+  "pm.home.skills": [
+    "产品战略与路线图",
+    "利益相关者与团队管理",
+    "敏捷与 Scrum 交付",
+    "需求获取与 PRD",
+    "数据驱动的决策",
+    "跨职能协调"
+  ],
   "home.video.overview": "视频概览",
   "home.video.title": "简介与职业概述",
   "nav.resume": "简历",

@@ -4,10 +4,33 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { useTranslation } from 'react-i18next';
 
-export default function Home() {
+interface HomeProps {
+  variant?: 'qa' | 'pm';
+}
+
+const QA_SKILLS = [
+  'JavaScript & Playwright Architecture',
+  'PostgreSQL & API Testing (Postman)',
+  'CI/CD Pipelines (GitLab, GitHub Actions)',
+  'Finance & Professional Accounting Insight',
+  'Automated Schema Verification',
+  'Prompt Engineering for QA Optimization',
+];
+
+export default function Home({ variant = 'qa' }: HomeProps) {
   const { isDark } = useTheme();
   const { t } = useTranslation();
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+
+  const isPM = variant === 'pm';
+
+  useEffect(() => {
+    document.title = isPM ? t('pm.home.titleTag') : t('home.titleTag');
+  }, [isPM, t]);
+
+  const skills = isPM
+    ? (t('pm.home.skills', { returnObjects: true }) as string[])
+    : QA_SKILLS;
 
   // Close modal on ESC key
   useEffect(() => {
@@ -33,7 +56,7 @@ export default function Home() {
             <h1 className={`text-4xl sm:text-5xl md:text-6xl font-serif font-bold tracking-tight leading-tight ${
               isDark ? 'text-white' : 'text-gray-900'
             }`}>
-              {t('home.title')}
+              {isPM ? t('pm.home.title') : t('home.title')}
             </h1>
             {/* Signature pipeline underline */}
             <svg
@@ -55,7 +78,7 @@ export default function Home() {
           <p className={`mx-auto max-w-2xl text-base sm:text-lg leading-relaxed mb-8 ${
             isDark ? 'text-gray-400' : 'text-gray-600'
           }`}>
-            {t('home.description')}
+            {isPM ? t('pm.home.description') : t('home.description')}
           </p>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-md mx-auto text-sm font-medium">
@@ -85,17 +108,10 @@ export default function Home() {
           isDark ? 'bg-gray-900/50 border-gray-800' : 'bg-gray-50/70 border-gray-100'
         }`}>
           <h2 className={`text-xl font-bold tracking-tight mb-6 ${isDark ? 'text-gray-100' : 'text-gray-900'}`}>
-            {t('home.coreExpertise')}
+            {isPM ? t('pm.home.coreExpertise') : t('home.coreExpertise')}
           </h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-            {[
-              'JavaScript & Playwright Architecture',
-              'PostgreSQL & API Testing (Postman)',
-              'CI/CD Pipelines (GitLab, GitHub Actions)',
-              'Finance & Professional Accounting Insight',
-              'Automated Schema Verification',
-              'Prompt Engineering for QA Optimization',
-            ].map((skill) => (
+            {skills.map((skill) => (
               <li key={skill} className="flex items-start gap-3">
                 <span className={`mt-1.5 h-1.5 w-1.5 rounded-full shrink-0 ${
                   isDark ? 'bg-teal-400' : 'bg-green-600'
