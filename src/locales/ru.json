@@ -4,15 +4,24 @@
   "home.coreExpertise": "Ключевые компетенции",
   "home.video.overview": "Обзор видео",
   "home.video.title": "Введение и профессиональное резюме",
-  "article.title": "Заголовок статьи",
-  "article.placeholder": "Это пример статьи-заполнителя. Замените реальным содержимым.",
   "nav.resume": "Резюме",
-  "nav.article": "Статьи",
   "nav.projects": "Проекты",
   "nav.email": "Эл. почта",
   "nav.github": "GitHub",
   "nav.linkedin": "LinkedIn",
   "footer.rights": "Все права защищены.",
   "projects.title": "Проекты",
-  "resume.downloadAsPdf": "Скачать как PDF"
+  "resume.downloadAsPdf": "Скачать как PDF",
+  "projects.burankatop.title": "BurankaTop",
+  "projects.burankatop.tagline": "Team DPS и рейтинги Genshin Impact",
+  "projects.burankatop.description": "BurankaTop — это платформа-сообщество для теориикрафтинга в Genshin Impact. Она ранжирует командный DPS, показывает билды персонажей и выделяет составы, дружелюбные к F2P, с отдельными лидербордами для популярных мета-команд, таких как Odette и Sandrone. Тёмный кинематографичный интерфейс в сочетании с SEO, структурированными данными и веб-аналитикой делает данные удобными для изучения и распространения.",
+  "projects.burankatop.features": [
+    "Рейтинги командного DPS и лидерборды",
+    "Показ билдов персонажей",
+    "Гайды по F2P-составам",
+    "Тёмный адаптивный интерфейс",
+    "SEO, Open Graph и интеграция аналитики"
+  ],
+  "projects.burankatop.visit": "Посетить сайт",
+  "projects.burankatop.note": "Создан от идеи до запуска с помощью LLM — средний уровень технической сложности."
 }

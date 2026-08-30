@@ -58,7 +58,7 @@ export default function Home() {
             {t('home.description')}
           </p>
           
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-md mx-auto text-sm font-medium">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-md mx-auto text-sm font-medium">
             <Link
               to="/resume"
               className="px-5 py-2.5 bg-green-600 text-white rounded-xl hover:bg-green-700 active:scale-95 transition-all text-center"
@@ -74,16 +74,6 @@ export default function Home() {
               }`}
             >
               {t('nav.projects')}
-            </Link>
-            <Link
-              to="/article"
-              className={`px-5 py-2.5 border rounded-xl active:scale-95 transition-all text-center ${
-                isDark 
-                  ? 'border-gray-800 text-gray-300 hover:bg-gray-900 hover:text-white' 
-                  : 'border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-gray-900'
-              }`}
-            >
-              {t('nav.article')}
             </Link>
           </div>
         </div>

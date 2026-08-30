@@ -4,15 +4,24 @@
   "home.coreExpertise": "Core Expertise",
   "home.video.overview": "Video Overview",
   "home.video.title": "Intro & Professional Summary",
-  "article.title": "Article Title",
-  "article.placeholder": "This is a placeholder article page. Replace with real content.",
   "nav.resume": "Resume",
-  "nav.article": "Articles",
   "nav.projects": "Projects",
   "nav.email": "Email",
   "nav.github": "GitHub",
   "nav.linkedin": "LinkedIn",
   "footer.rights": "All rights reserved.",
   "projects.title": "Projects",
-  "resume.downloadAsPdf": "Download as PDF"
+  "resume.downloadAsPdf": "Download as PDF",
+  "projects.burankatop.title": "BurankaTop",
+  "projects.burankatop.tagline": "Genshin Impact Team DPS & Leaderboards",
+  "projects.burankatop.description": "BurankaTop is a community-driven platform for Genshin Impact theorycrafting. It ranks team DPS, showcases character builds, and highlights F2P-friendly compositions, with dedicated leaderboards for featured meta teams such as Odette and Sandrone. A dark, cinematic interface paired with SEO, structured data, and web analytics makes the data easy to explore and share.",
+  "projects.burankatop.features": [
+    "Team DPS rankings & leaderboards",
+    "Character build showcases",
+    "F2P-friendly team guides",
+    "Dark, responsive UI",
+    "SEO, Open Graph & analytics integration"
+  ],
+  "projects.burankatop.visit": "Visit website",
+  "projects.burankatop.note": "Raised from idea to launch with the help of an LLM — medium technical complexity."
 }

@@ -4,15 +4,24 @@
   "home.coreExpertise": "الخبرة الأساسية",
   "home.video.overview": "نظرة عامة على الفيديو",
   "home.video.title": "مقدمة وملخص مهني",
-  "article.title": "عنوان المقال",
-  "article.placeholder": "هذه صفحة مقالة بديلة. استبدلها بمحتوى حقيقي.",
   "nav.resume": "السيرة الذاتية",
-  "nav.article": "مقالات",
   "nav.projects": "مشاريع",
   "nav.email": "البريد الإلكتروني",
   "nav.github": "GitHub",
   "nav.linkedin": "LinkedIn",
   "footer.rights": "جميع الحقوق محفوظة.",
   "projects.title": "مشاريع",
-  "resume.downloadAsPdf": "تنزيل كملف PDF"
+  "resume.downloadAsPdf": "تنزيل كملف PDF",
+  "projects.burankatop.title": "BurankaTop",
+  "projects.burankatop.tagline": "DPS الفرق ولوحات الصدارة في Genshin Impact",
+  "projects.burankatop.description": "BurankaTop هي منصة مجتمعية لنظريات بناء Genshin Impact. ترتب DPS الفرق، وتعرض بناء الشخصيات، وتسلط الضوء على تشكيلات مناسبة للاعبين المجانيين، مع لوحات صدارة مخصصة لفرق الميتا الشهيرة مثل Odette وSandrone. واجهة داكنة سينمائية مع تحسين محركات البحث والبيانات المنظمة وتحليلات الويب تجعل البيانات سهلة الاستكشاف والمشاركة.",
+  "projects.burankatop.features": [
+    "ترتيب DPS الفرق ولوحات الصدارة",
+    "عرض بناء الشخصيات",
+    "أدلة الفرق المجانية",
+    "واجهة داكنة متجاوبة",
+    "تكامل SEO وOpen Graph والتحليلات"
+  ],
+  "projects.burankatop.visit": "زيارة الموقع",
+  "projects.burankatop.note": "تم تطويره من الفكرة إلى الإطلاق بمساعدة LLM — تعقيد تقني متوسط."
 }

@@ -4,15 +4,24 @@
   "home.coreExpertise": "核心专长",
   "home.video.overview": "视频概览",
   "home.video.title": "简介与职业概述",
-  "article.title": "文章标题",
-  "article.placeholder": "这是占位符文章页面。请替换为真实内容。",
   "nav.resume": "简历",
-  "nav.article": "文章",
   "nav.projects": "项目",
   "nav.email": "电子邮件",
   "nav.github": "GitHub",
   "nav.linkedin": "LinkedIn",
   "footer.rights": "版权所有。",
   "projects.title": "项目",
-  "resume.downloadAsPdf": "下载为 PDF"
+  "resume.downloadAsPdf": "下载为 PDF",
+  "projects.burankatop.title": "BurankaTop",
+  "projects.burankatop.tagline": "原神队伍 DPS 与排行榜",
+  "projects.burankatop.description": "BurankaTop 是一个由社区驱动的原神理论构建平台。它对队伍 DPS 进行排名、展示角色配装，并突出适合无氪玩家的阵容，还为 Odette 和 Sandrone 等热门主流队伍提供专属排行榜。深色电影感界面搭配 SEO、结构化数据和网站分析，让数据易于浏览和分享。",
+  "projects.burankatop.features": [
+    "队伍 DPS 排名与排行榜",
+    "角色配装展示",
+    "无氪队伍攻略",
+    "深色响应式界面",
+    "SEO、Open Graph 与分析集成"
+  ],
+  "projects.burankatop.visit": "访问网站",
+  "projects.burankatop.note": "在 LLM 的帮助下从创意推进到发布——中等技术复杂度。"
 }

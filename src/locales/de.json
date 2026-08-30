@@ -4,15 +4,24 @@
   "home.coreExpertise": "Kernkompetenz",
   "home.video.overview": "Video‑Übersicht",
   "home.video.title": "Einleitung & berufliche Zusammenfassung",
-  "article.title": "Artikeltitel",
-  "article.placeholder": "Dies ist eine Platzhalter‑Artikelseite. Ersetzen Sie sie durch echten Inhalt.",
   "nav.resume": "Lebenslauf",
-  "nav.article": "Artikel",
   "nav.projects": "Projekte",
   "nav.email": "E‑Mail",
   "nav.github": "GitHub",
   "nav.linkedin": "LinkedIn",
   "footer.rights": "Alle Rechte vorbehalten.",
   "projects.title": "Projekte",
-  "resume.downloadAsPdf": "Als PDF herunterladen"
+  "resume.downloadAsPdf": "Als PDF herunterladen",
+  "projects.burankatop.title": "BurankaTop",
+  "projects.burankatop.tagline": "Genshin Impact Team-DPS und Ranglisten",
+  "projects.burankatop.description": "BurankaTop ist eine Community-Plattform für Genshin-Impact-Theorycrafting. Sie stuft Team-DPS ein, zeigt Charakter-Builds und hebt F2P-freundliche Aufstellungen hervor, mit eigenen Ranglisten für populäre Meta-Teams wie Odette und Sandrone. Eine dunkle, kinematische Oberfläche in Kombination mit SEO, strukturierten Daten und Web-Analyse macht die Daten leicht zu erkunden und zu teilen.",
+  "projects.burankatop.features": [
+    "Team-DPS-Rankings & Ranglisten",
+    "Charakter-Build-Showcases",
+    "F2P-Team-Guides",
+    "Dunkle, responsive Oberfläche",
+    "SEO-, Open-Graph- und Analyse-Integration"
+  ],
+  "projects.burankatop.visit": "Website besuchen",
+  "projects.burankatop.note": "Von der Idee bis zum Launch mit Hilfe eines LLM umgesetzt — mittlere technische Komplexität."
 }

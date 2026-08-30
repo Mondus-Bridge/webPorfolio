@@ -10,7 +10,7 @@ import ru from '../locales/ru.json';
 import de from '../locales/de.json';
 
 type LocaleMap = {
-  [code: string]: Record<string, string>;
+  [code: string]: Record<string, string | string[]>;
 };
 
 const locales: LocaleMap = {
@@ -29,7 +29,7 @@ interface LanguageContextProps {
   /** Change current language */
   setLanguage: (lang: string) => void;
   /** Dictionary for the current language */
-  translations: Record<string, string>;
+  translations: Record<string, string | string[]>;
 }
 
 const LanguageContext = createContext<LanguageContextProps | undefined>(undefined);
@@ -66,7 +66,7 @@ export const useLanguage = () => {
 };
 
 /** Helper hook to get a translation for a key */
-export const useTranslation = (key: string): string => {
+export const useTranslation = (key: string): string | string[] => {
   const { translations } = useLanguage();
   return translations[key] ?? key;
 };

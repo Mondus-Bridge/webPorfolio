@@ -78,7 +78,6 @@ export default function Header() {
         <div className="flex items-center gap-3 sm:gap-4 md:gap-6 min-w-0">
           <nav className="flex items-center gap-3 sm:gap-6 min-w-0 overflow-x-auto no-scrollbar">
             <NavLink to="/resume">{t('nav.resume')}</NavLink>
-            <NavLink to="/article">{t('nav.article')}</NavLink>
             <NavLink to="/projects">{t('nav.projects')}</NavLink>
           </nav>
           
