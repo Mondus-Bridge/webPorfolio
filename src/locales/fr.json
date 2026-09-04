@@ -36,5 +36,12 @@
     "Intégration SEO, Open Graph et analytique"
   ],
   "projects.burankatop.visit": "Visiter le site",
-  "projects.burankatop.note": "Mené de l'idée au lancement avec l'aide d'un LLM — complexité technique moyenne."
+  "projects.burankatop.note": "Mené de l'idée au lancement avec l'aide d'un LLM — complexité technique moyenne.",
+  "nav.articles": "Articles",
+  "articles.title": "Articles",
+  "articles.midGradeWebApp.title": "Mon expérience : comment les outils d'IA ont aidé à créer une application web de niveau intermédiaire",
+  "articles.manualTesting.title": "Comment l'IA a rendu les tests manuels à nouveau précieux",
+  "articles.readMore": "Lire la suite",
+  "articles.backToList": "Retour aux articles",
+  "articles.notFound": "Article introuvable"
 }

@@ -36,5 +36,12 @@
     "SEO, Open Graph и интеграция аналитики"
   ],
   "projects.burankatop.visit": "Посетить сайт",
-  "projects.burankatop.note": "Создан от идеи до запуска с помощью LLM — средний уровень технической сложности."
+  "projects.burankatop.note": "Создан от идеи до запуска с помощью LLM — средний уровень технической сложности.",
+  "nav.articles": "Статьи",
+  "articles.title": "Статьи",
+  "articles.midGradeWebApp.title": "Мой опыт: как ИИ-инструменты помогли создать веб-приложение среднего уровня",
+  "articles.manualTesting.title": "Как ИИ снова сделал ручное тестирование ценным",
+  "articles.readMore": "Читать далее",
+  "articles.backToList": "Назад к статьям",
+  "articles.notFound": "Статья не найдена"
 }

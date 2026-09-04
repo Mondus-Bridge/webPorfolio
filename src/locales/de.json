@@ -36,5 +36,12 @@
     "SEO-, Open-Graph- und Analyse-Integration"
   ],
   "projects.burankatop.visit": "Website besuchen",
-  "projects.burankatop.note": "Von der Idee bis zum Launch mit Hilfe eines LLM umgesetzt — mittlere technische Komplexität."
+  "projects.burankatop.note": "Von der Idee bis zum Launch mit Hilfe eines LLM umgesetzt — mittlere technische Komplexität.",
+  "nav.articles": "Artikel",
+  "articles.title": "Artikel",
+  "articles.midGradeWebApp.title": "Meine Erfahrung: Wie KI-Tools halfen, eine Web-App mittlerer Größe zu erstellen",
+  "articles.manualTesting.title": "Wie KI manuelles Testen wieder wertvoll machte",
+  "articles.readMore": "Weiterlesen",
+  "articles.backToList": "Zurück zu Artikeln",
+  "articles.notFound": "Artikel nicht gefunden"
 }

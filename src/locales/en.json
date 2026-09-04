@@ -36,5 +36,12 @@
     "SEO, Open Graph & analytics integration"
   ],
   "projects.burankatop.visit": "Visit website",
-  "projects.burankatop.note": "Raised from idea to launch with the help of an LLM — medium technical complexity."
+  "projects.burankatop.note": "Raised from idea to launch with the help of an LLM — medium technical complexity.",
+  "nav.articles": "Articles",
+  "articles.title": "Articles",
+  "articles.midGradeWebApp.title": "My Experience and AI Tools Help to Create a Mid-Grade Web App",
+  "articles.manualTesting.title": "How AI Made Manual Testing Valuable Again",
+  "articles.readMore": "Read more",
+  "articles.backToList": "Back to articles",
+  "articles.notFound": "Article not found"
 }

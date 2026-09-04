@@ -36,5 +36,12 @@
     "تكامل SEO وOpen Graph والتحليلات"
   ],
   "projects.burankatop.visit": "زيارة الموقع",
-  "projects.burankatop.note": "تم تطويره من الفكرة إلى الإطلاق بمساعدة LLM — تعقيد تقني متوسط."
+  "projects.burankatop.note": "تم تطويره من الفكرة إلى الإطلاق بمساعدة LLM — تعقيد تقني متوسط.",
+  "nav.articles": "مقالات",
+  "articles.title": "مقالات",
+  "articles.midGradeWebApp.title": "تجربتي مع أدوات الذكاء الاصطناعي في إنشاء تطبيق ويب متوسط المستوى",
+  "articles.manualTesting.title": "كيف جعل الذكاء الاصطناعي الاختبار اليدوي قيّمًا من جديد",
+  "articles.readMore": "اقرأ المزيد",
+  "articles.backToList": "العودة إلى المقالات",
+  "articles.notFound": "المقال غير موجود"
 }

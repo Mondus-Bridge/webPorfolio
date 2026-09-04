@@ -6,6 +6,8 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import Resume from './pages/Resume';
 import Projects from './pages/Projects';
+import Articles from './pages/Articles';
+import Article from './pages/Article';
 
 export default function App() {
   return (
@@ -17,6 +19,8 @@ export default function App() {
           <Route path="/pm/main" element={<Home variant="pm" />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/articles" element={<Articles />} />
+          <Route path="/articles/:slug" element={<Article />} />
         </Routes>
       </Layout>
     </Router>

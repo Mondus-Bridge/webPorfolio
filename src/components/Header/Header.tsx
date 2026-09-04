@@ -81,6 +81,7 @@ export default function Header() {
           <nav className="flex items-center gap-3 sm:gap-6 min-w-0 overflow-x-auto no-scrollbar">
             <NavLink to="/resume">{t('nav.resume')}</NavLink>
             <NavLink to="/projects">{t('nav.projects')}</NavLink>
+            <NavLink to="/articles">{t('nav.articles')}</NavLink>
           </nav>
           
           <span className={`hidden xs:inline-block h-4 w-[1px] ${isDark ? 'bg-gray-800' : 'bg-gray-200'}`} aria-hidden="true" />
