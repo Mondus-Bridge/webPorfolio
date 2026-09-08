@@ -41,6 +41,8 @@
   "articles.title": "Artikel",
   "articles.midGradeWebApp.title": "Meine Erfahrung: Wie KI-Tools halfen, eine Web-App mittlerer Größe zu erstellen",
   "articles.manualTesting.title": "Wie KI manuelles Testen wieder wertvoll machte",
+  "articles.communicateWithAiAgent.title": "Wie Sie wirklich mit Ihrem KI-Agenten kommunizieren",
+  "articles.prdsFailAiAgents.title": "Warum PRDs bei KI-Agenten scheitern: Dokumentation für agentische Workflows strukturieren",
   "articles.readMore": "Weiterlesen",
   "articles.backToList": "Zurück zu Artikeln",
   "articles.notFound": "Artikel nicht gefunden"

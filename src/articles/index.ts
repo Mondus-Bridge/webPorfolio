@@ -17,8 +17,26 @@ import manualTestingFr from './manual-testing/fr.md?raw';
 import manualTestingDe from './manual-testing/de.md?raw';
 import manualTestingZh from './manual-testing/zh.md?raw';
 
+import communicateWithAiAgentEn from './communicate-with-ai-agent/en.md?raw';
+import communicateWithAiAgentRu from './communicate-with-ai-agent/ru.md?raw';
+import communicateWithAiAgentAr from './communicate-with-ai-agent/ar.md?raw';
+import communicateWithAiAgentEs from './communicate-with-ai-agent/es.md?raw';
+import communicateWithAiAgentFr from './communicate-with-ai-agent/fr.md?raw';
+import communicateWithAiAgentDe from './communicate-with-ai-agent/de.md?raw';
+import communicateWithAiAgentZh from './communicate-with-ai-agent/zh.md?raw';
+
+import prdsFailAiAgentsEn from './prds-fail-ai-agents/en.md?raw';
+import prdsFailAiAgentsRu from './prds-fail-ai-agents/ru.md?raw';
+import prdsFailAiAgentsAr from './prds-fail-ai-agents/ar.md?raw';
+import prdsFailAiAgentsEs from './prds-fail-ai-agents/es.md?raw';
+import prdsFailAiAgentsFr from './prds-fail-ai-agents/fr.md?raw';
+import prdsFailAiAgentsDe from './prds-fail-ai-agents/de.md?raw';
+import prdsFailAiAgentsZh from './prds-fail-ai-agents/zh.md?raw';
+
 import midGradeWebAppCover from '../assets/articles/mid-grade-web-app.png';
 import manualTestingCover from '../assets/articles/manual-testing.png';
+import communicateWithAiAgentCover from '../assets/articles/communicate-with-ai-agent.png';
+import prdsFailAiAgentsCover from '../assets/articles/prds-fail-ai-agents.png';
 
 export interface Article {
   slug: string;
@@ -30,6 +48,40 @@ export interface Article {
 }
 
 export const articles: Article[] = [
+  {
+    slug: 'prds-fail-ai-agents',
+    titleKey: 'articles.prdsFailAiAgents.title',
+    date: '2026-09-07',
+    originalUrl:
+      'https://www.linkedin.com/pulse/why-prds-fail-ai-agents-structuring-documentation-agentic-gabitov-1twhf/',
+    cover: prdsFailAiAgentsCover,
+    contentByLocale: {
+      en: prdsFailAiAgentsEn,
+      ru: prdsFailAiAgentsRu,
+      ar: prdsFailAiAgentsAr,
+      es: prdsFailAiAgentsEs,
+      fr: prdsFailAiAgentsFr,
+      de: prdsFailAiAgentsDe,
+      zh: prdsFailAiAgentsZh,
+    },
+  },
+  {
+    slug: 'communicate-with-ai-agent',
+    titleKey: 'articles.communicateWithAiAgent.title',
+    date: '2026-09-06',
+    originalUrl:
+      'https://www.linkedin.com/pulse/how-actually-communicate-your-ai-agent-ilnur-gabitov-baizf/',
+    cover: communicateWithAiAgentCover,
+    contentByLocale: {
+      en: communicateWithAiAgentEn,
+      ru: communicateWithAiAgentRu,
+      ar: communicateWithAiAgentAr,
+      es: communicateWithAiAgentEs,
+      fr: communicateWithAiAgentFr,
+      de: communicateWithAiAgentDe,
+      zh: communicateWithAiAgentZh,
+    },
+  },
   {
     slug: 'mid-grade-web-app',
     titleKey: 'articles.midGradeWebApp.title',

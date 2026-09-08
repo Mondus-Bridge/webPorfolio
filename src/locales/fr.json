@@ -41,6 +41,8 @@
   "articles.title": "Articles",
   "articles.midGradeWebApp.title": "Mon expérience : comment les outils d'IA ont aidé à créer une application web de niveau intermédiaire",
   "articles.manualTesting.title": "Comment l'IA a rendu les tests manuels à nouveau précieux",
+  "articles.communicateWithAiAgent.title": "Comment communiquer réellement avec votre agent d'IA",
+  "articles.prdsFailAiAgents.title": "Pourquoi les PRD échouent avec les agents d'IA : structurer la documentation pour les workflows agentiques",
   "articles.readMore": "Lire la suite",
   "articles.backToList": "Retour aux articles",
   "articles.notFound": "Article introuvable"

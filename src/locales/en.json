@@ -41,6 +41,8 @@
   "articles.title": "Articles",
   "articles.midGradeWebApp.title": "My Experience and AI Tools Help to Create a Mid-Grade Web App",
   "articles.manualTesting.title": "How AI Made Manual Testing Valuable Again",
+  "articles.communicateWithAiAgent.title": "How to Actually Communicate with Your AI Agent",
+  "articles.prdsFailAiAgents.title": "Why PRDs Fail AI Agents: Structuring Documentation for Agentic Workflows",
   "articles.readMore": "Read more",
   "articles.backToList": "Back to articles",
   "articles.notFound": "Article not found"

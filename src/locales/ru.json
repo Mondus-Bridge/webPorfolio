@@ -41,6 +41,8 @@
   "articles.title": "Статьи",
   "articles.midGradeWebApp.title": "Мой опыт: как ИИ-инструменты помогли создать веб-приложение среднего уровня",
   "articles.manualTesting.title": "Как ИИ снова сделал ручное тестирование ценным",
+  "articles.communicateWithAiAgent.title": "Как на самом деле общаться со своим ИИ-агентом",
+  "articles.prdsFailAiAgents.title": "Почему PRD подводят ИИ-агентов: структурирование документации для агентных рабочих процессов",
   "articles.readMore": "Читать далее",
   "articles.backToList": "Назад к статьям",
   "articles.notFound": "Статья не найдена"
